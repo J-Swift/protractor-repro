@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <mat-card class="col-6">
+            <form [formGroup]="form">
+                <mat-form-field class="col-12 e2e-form-name">
+                    <mat-select placeholder="Names" formControlName="personName">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let person of (validPersonNames$ | async)" [value]="person">{{person}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <p>Required</p>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="col-12  e2e-form-state">
+                    <mat-select placeholder="States" formControlName="stateName">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let state of (validStateNames$ | async)" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <p>Required</p>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </mat-card>
+    </div>
+</div>
