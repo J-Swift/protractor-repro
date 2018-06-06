@@ -19,8 +19,8 @@ export module MaterialHelper {
         return commonDropdownValue.click();
     }
 
-    export function openOptionDropdown(dropdownField: ElementFinder) {
-        return dropdownField.click()
+    export async function openOptionDropdown(dropdownField: ElementFinder) {
+        return await dropdownField.click()
             .then(_ => {
                 return browser.wait(async () => {
                     return await currentlyShownMatOptions.count() > 1;

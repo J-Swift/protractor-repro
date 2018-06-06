@@ -10,8 +10,8 @@ export class PersonPage {
     private nameInput = element(by.className('e2e-form-name'));
     private stateInput = element(by.className('e2e-form-state'));
 
-    navigateTo() {
-        return browser.get('/person');
+    async navigateTo() {
+        return await browser.get('/person');
     }
 
     async fillInSettings(settings: SettingsLike) {
