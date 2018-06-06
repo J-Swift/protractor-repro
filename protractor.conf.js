@@ -24,20 +24,7 @@ const config = {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
-
-    // NOTE(jpr): this is to workaround EPIPE errors in protractor. We should test removing this when
-    // the underlying selenium webdriver is upgraded to v4.0.
-    // See https://github.com/angular/protractor/issues/4294#issuecomment-357941307
-    let currentCommand = Promise.resolve();
-    const webdriverSchedule = browser.driver.schedule;
-    browser.driver.schedule = (command, description) => {
-      currentCommand = currentCommand.then(() =>
-        webdriverSchedule.call(browser.driver, command, description)
-      );
-      return currentCommand;
-    };
   },
 };
 
 exports.config = config;
-
